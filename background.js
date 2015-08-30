@@ -8,6 +8,7 @@ chrome.runtime.onInstalled.addListener(function() {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { urlContains: 'homes' },
+            css: [".app-view-closedDetail"]
           })
         ],
         actions: [ new chrome.declarativeContent.ShowPageAction() ]
