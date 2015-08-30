@@ -1,0 +1,25 @@
+{
+  "manifest_version": 2,
+
+  "name": "Download Zillow Search",
+  "description": "Chrome extension that downloads currently viewed Zillow Search as a CSV",
+  "version": "0.0.0.1",
+  
+  "background": {
+    "scripts": ["background.js"],
+     "persistent": false
+  },
+  
+  "content_scripts": [{
+      "matches": ["*://*.zillow.com/*"],
+      "js": ["content.js"]
+  }],
+
+  "page_action": {
+    "default_icon": "house.png",
+    "default_title": "Download Zillow Search"
+  },
+  "permissions" : [
+    "declarativeContent"
+  ]
+}
