@@ -8,7 +8,7 @@ chrome.runtime.onInstalled.addListener(function() {
         conditions: [
           new chrome.declarativeContent.PageStateMatcher({
             pageUrl: { urlContains: 'homes' },
-            css: [".app-view-closedDetail"]
+//            css: [".app-view-closedDetail"]
           })
         ],
         actions: [ new chrome.declarativeContent.ShowPageAction() ]
@@ -26,18 +26,11 @@ function downloadURI(uri, name) {
 
 function downloadResults(results) {
   downloadURI(
-  	'data:text/csv;charset=utf-8;base64,' + window.btoa(results), 
+  	'data:text/csv;charset=utf-8;base64,' + window.btoa(results),
   	"zillow-results.csv"
   );
 }
 
-var urlRegex = /^https?:\/\/(?:[^\.]+\.)?zillow\.com/;
-
 chrome.pageAction.onClicked.addListener(function(tab) {
-  if (urlRegex.test(tab.url)) {
-    chrome.tabs.sendMessage(tab.id, { text: "send_results" }, downloadResults);
-  }
+  chrome.tabs.sendMessage(tab.id, { text: "send_results" }, downloadResults);
 });
-
-
-

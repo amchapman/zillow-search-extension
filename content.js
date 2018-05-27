@@ -3,12 +3,12 @@ chrome.runtime.onMessage.addListener(function(msg, sender, sendResponse) {
     var csv = '"Address","Beds","Baths","Sqft","Type","Price","Sold","Built","Lot"\n';
     var x = document.getElementsByClassName("property-listing");
     var price, rooms, beds, baths, sqft, address, sold, built, lot, type;
-    for (i = 0; i < x.length; i++) { 
+    for (i = 0; i < x.length; i++) {
 			type = "-";
 			price = "-";
 			sold = "-";
 			if (x[i].querySelector(".zsg-icon-recently-sold")) { // Recently Sold
-				type = "Recently Sold";  
+				type = "Recently Sold";
 				price = getText(x[i],".listing-type").split(" ")[1];
 				sold = getText(x[i],".sold-date").split(" ")[2];
 			} else if (x[i].querySelector(".zsg-icon-for-sale")) { // For Sale
